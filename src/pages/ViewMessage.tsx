@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Message, getMessage } from '../data/messages';
 import {
   IonBackButton,
   IonButtons,
@@ -10,12 +8,15 @@ import {
   IonLabel,
   IonNote,
   IonPage,
+  IonTitle,
   IonToolbar,
   useIonViewWillEnter,
-} from '@ionic/react';
-import { personCircle } from 'ionicons/icons';
-import { useParams } from 'react-router';
-import './ViewMessage.css';
+} from "@ionic/react";
+import { personCircle } from "ionicons/icons";
+import { useState } from "react";
+import { useParams } from "react-router";
+import { getMessage, Message } from "../data/messages";
+import "./ViewMessage.css";
 
 function ViewMessage() {
   const [message, setMessage] = useState<Message>();
@@ -33,14 +34,24 @@ function ViewMessage() {
           <IonButtons slot="start">
             <IonBackButton text="Inbox" defaultHref="/home"></IonBackButton>
           </IonButtons>
+          <IonTitle>{message?.fromName}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         {message ? (
           <>
+            <IonHeader collapse="condense">
+              <IonToolbar>
+                <IonTitle size="large">{message.fromName}</IonTitle>
+              </IonToolbar>
+            </IonHeader>
             <IonItem>
-              <IonIcon aria-hidden="true" icon={personCircle} color="primary"></IonIcon>
+              <IonIcon
+                aria-hidden="true"
+                icon={personCircle}
+                color="primary"
+              ></IonIcon>
               <IonLabel className="ion-text-wrap">
                 <h2>
                   {message.fromName}
