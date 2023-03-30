@@ -1,0 +1,7 @@
+{
+  "name": "large-title-repro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
